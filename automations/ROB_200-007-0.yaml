@@ -1,0 +1,192 @@
+blueprint:
+  name: ROBB ROB_200-007-0 general use
+  description: "This blueprint is for the ROBB ROB_200-007-0 dimmer switch when used with zigbee2mqtt.
+  It is for genral use so all buttons can be connected to any action of your choice.
+  Make sure to select the correct sensor for the remote."
+  domain: automation
+  input:
+    remote:
+      name: Remote
+      description: Dimmer remote to use
+      selector:
+        entity:
+          integration: mqtt
+          domain: sensor
+          
+    on_button_1_short:
+      name: On button 1 - short
+      default: []
+      selector:
+        action: {}
+    off_button_1_short:
+      name: Off button 1 - short
+      default: []
+      selector:
+        action: {}
+    on_button_1_hold:
+      name: On button 1 - hold
+      default: []
+      selector:
+        action: {}
+    off_button_1_hold:
+      name: Off button 1 - hold
+      default: []
+      selector:
+        action: {}
+    button_1_release:
+      name: Button 1 - release
+      default: []
+      selector:
+        action: {}
+        
+    on_button_2_short:
+      name: On button 2 - short
+      default: []
+      selector:
+        action: {}
+    off_button_2_short:
+      name: Off button 2 - short
+      default: []
+      selector:
+        action: {}
+    on_button_2_hold:
+      name: On button 2 - hold
+      default: []
+      selector:
+        action: {}
+    off_button_2_hold:
+      name: Off button 2 - hold
+      default: []
+      selector:
+        action: {}
+    button_2_release:
+      name: Button 2 - release
+      default: []
+      selector:
+        action: {}
+        
+    on_button_3_short:
+      name: On button 3 - short
+      default: []
+      selector:
+        action: {}
+    off_button_3_short:
+      name: Off button 3 - short
+      default: []
+      selector:
+        action: {}
+    on_button_3_hold:
+      name: On button 3 - hold
+      default: []
+      selector:
+        action: {}
+    off_button_3_hold:
+      name: Off button 3 - hold
+      default: []
+      selector:
+        action: {}
+    button_3_release:
+      name: Button 3 - release
+      default: []
+      selector:
+        action: {}
+        
+    on_button_4_short:
+      name: On button 4 - short
+      default: []
+      selector:
+        action: {}
+    off_button_4_short:
+      name: Off button 4 - short
+      default: []
+      selector:
+        action: {}
+    on_button_4_hold:
+      name: On button 4 - hold
+      default: []
+      selector:
+        action: {}
+    off_button_4_hold:
+      name: Off button 4 - hold
+      default: []
+      selector:
+        action: {}
+    button_4_release:
+      name: Button 4 - release
+      default: []
+      selector:
+        action: {}
+        
+mode: restart
+max_exceeded: silent
+trigger:
+  - platform: state
+    entity_id: !input "remote"
+    attribute: action
+action:
+  - variables:
+      command: "{{ trigger.to_state.state }}"
+  - choose:
+      - conditions:
+          - "{{ command == 'on_1' }}"
+        sequence: !input "on_button_1_short"
+      - conditions:
+          - "{{ command == 'off_1' }}"
+        sequence: !input "off_button_1_short"
+      - conditions:
+          - "{{ command == 'brightness_move_up_1' }}"
+        sequence: !input "on_button_1_hold"
+      - conditions:
+          - "{{ command == 'brightness_move_down_1' }}"
+        sequence: !input "off_button_1_hold"
+      - conditions:
+          - "{{ command == 'brightness_stop_1' }}"
+        sequence: !input "button_1_release"
+        
+      - conditions:
+          - "{{ command == 'on_2' }}"
+        sequence: !input "on_button_2_short"
+      - conditions:
+          - "{{ command == 'off_2' }}"
+        sequence: !input "off_button_2_short"
+      - conditions:
+          - "{{ command == 'brightness_move_up_2' }}"
+        sequence: !input "on_button_2_hold"
+      - conditions:
+          - "{{ command == 'brightness_move_down_2' }}"
+        sequence: !input "off_button_2_hold"
+      - conditions:
+          - "{{ command == 'brightness_stop_2' }}"
+        sequence: !input "button_2_release"
+        
+      - conditions:
+          - "{{ command == 'on_3' }}"
+        sequence: !input "on_button_3_short"
+      - conditions:
+          - "{{ command == 'off_3' }}"
+        sequence: !input "off_button_3_short"
+      - conditions:
+          - "{{ command == 'brightness_move_up_3' }}"
+        sequence: !input "on_button_3_hold"
+      - conditions:
+          - "{{ command == 'brightness_move_down_3' }}"
+        sequence: !input "off_button_3_hold"
+      - conditions:
+          - "{{ command == 'brightness_stop_3' }}"
+        sequence: !input "button_3_release"
+        
+      - conditions:
+          - "{{ command == 'on_4' }}"
+        sequence: !input "on_button_4_short"
+      - conditions:
+          - "{{ command == 'off_4' }}"
+        sequence: !input "off_button_4_short"
+      - conditions:
+          - "{{ command == 'brightness_move_up_4' }}"
+        sequence: !input "on_button_4_hold"
+      - conditions:
+          - "{{ command == 'brightness_move_down_4' }}"
+        sequence: !input "off_button_4_hold"
+      - conditions:
+          - "{{ command == 'brightness_stop_4' }}"
+        sequence: !input "button_4_release"
