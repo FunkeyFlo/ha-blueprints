@@ -1,5 +1,5 @@
 # FunkeyFlo's Home Assistant Blueprints
-This repository contains a collection of Home assistant blueprints I frequently find myself using.
+This repository contains a collection of Home assistant blueprints I created.
 
 | Device | Links | Install |
 | -- | -- | -- |
