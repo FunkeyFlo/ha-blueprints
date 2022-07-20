@@ -1,7 +1,7 @@
 # FunkeyFlo's Home Assistant Blueprints
 This repository contains a collection of Home assistant blueprints I created.
 
-If you enjoy the my work please consider donating to sponsor further development! 💕
+If you enjoy my work please consider donating to sponsor further development! 💕
 
 <a href="https://www.buymeacoffee.com/funkeyflo" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
